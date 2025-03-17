@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_hub/core/utils/app_colors.dart';
 
 class CustomButtons extends StatelessWidget {
   const CustomButtons({super.key, required this.onPressed, required this.text});
@@ -12,13 +13,13 @@ class CustomButtons extends StatelessWidget {
       width: double.infinity,
       child: TextButton(
         style: TextButton.styleFrom(
-            backgroundColor: Colors.green,
+            backgroundColor: AppColors.primaryColor,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16))),
         onPressed: onPressed,
         child: Text(
           text,
-          style: const TextStyle(color: Colors.white),
+          style: const TextStyle(color: AppColors.white),
         ),
       ),
     );

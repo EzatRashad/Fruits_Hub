@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_hub/core/utils/app_colors.dart';
 import 'package:fruit_hub/core/utils/app_images.dart';
 import 'package:fruit_hub/features/on_boarding/presentation/view/widgets/on_boarding_page_view_item.dart';
 
@@ -16,27 +17,19 @@ class OnBoardingPageView extends StatelessWidget {
             children: [
               Text(
                 'مرحبًا بك في',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: Theme.of(context).textTheme.titleLarge,
               ),
               Text(
                 'HUB',
-                style: TextStyle(
-                  color: Colors.yellowAccent,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
+                style:  Theme.of(context).textTheme.titleLarge!.copyWith(
+                      color: AppColors.secondrtColor,
+                    ), 
               ),
               Text(
                 'Fruit',
-                style: TextStyle(
-                  color: Colors.greenAccent,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
+                style:  Theme.of(context).textTheme.titleLarge!.copyWith(
+                      color: AppColors.primaryColor,
+                    ),  
               ),
             ],
           ),

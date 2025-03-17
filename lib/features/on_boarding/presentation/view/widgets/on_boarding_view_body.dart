@@ -1,5 +1,6 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:fruit_hub/core/utils/app_colors.dart';
 import 'package:fruit_hub/features/on_boarding/presentation/view/widgets/on_boarding_page_view.dart';
 
 import '../../../../../core/widgets/custom_buttons.dart';
@@ -50,9 +51,10 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
             //position: currentIndexPage,
             decorator: DotsDecorator(
               color: currentPage == 1
-                  ? Colors.green
+                  ? AppColors.primaryColor
+                  // ignore: deprecated_member_use
                   : Colors.green.withOpacity(.5), // Inactive color
-              activeColor: Colors.green,
+              activeColor: AppColors.primaryColor,
             ),
           ),
           const SizedBox(

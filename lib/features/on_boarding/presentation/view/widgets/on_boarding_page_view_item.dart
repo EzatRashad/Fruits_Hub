@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fruit_hub/core/utils/utils.dart';
 
 class OnBoardingPageViewItem extends StatelessWidget {
   const OnBoardingPageViewItem(
@@ -43,10 +44,11 @@ class OnBoardingPageViewItem extends StatelessWidget {
                 ),
                 Visibility(
                   visible: visible,
-                  child: const Padding(
+                  child: Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text(
                       "تخط",
+                      style: Theme.of(context).textTheme.titleSmall,
                     ),
                   ),
                 ),
@@ -57,20 +59,13 @@ class OnBoardingPageViewItem extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                SizedBox(
-                  height: 10,
-                ),
+                20.ph,
                 title,
-                const SizedBox(
-                  height: 10,
-                ),
+                24.ph,
                 Text(
                   subTitle,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontSize: 10,
-                    color: Colors.grey,
-                  ),
+                  style: Theme.of(context).textTheme.titleSmall,
                 ),
               ],
             ),
