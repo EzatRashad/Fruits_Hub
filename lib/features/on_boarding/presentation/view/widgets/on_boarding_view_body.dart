@@ -1,8 +1,12 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:fruit_hub/features/auth/presentation/views/login_view.dart';
 import 'package:fruit_hub/core/utils/app_colors.dart';
+import 'package:fruit_hub/core/utils/utils.dart';
 import 'package:fruit_hub/features/on_boarding/presentation/view/widgets/on_boarding_page_view.dart';
 
+import '../../../../../core/services/shared_preferences_service.dart';
+import '../../../../../core/utils/constants.dart';
 import '../../../../../core/widgets/custom_buttons.dart';
 
 class OnBoardingViewBody extends StatefulWidget {
@@ -57,9 +61,7 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
               activeColor: AppColors.primaryColor,
             ),
           ),
-          const SizedBox(
-            height: 29,
-          ),
+          29.ph,
           Visibility(
             visible: currentPage == 1 ? true : false,
             maintainSize: true,
@@ -67,12 +69,18 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
             maintainState: true,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: CustomButtons(onPressed: () {}, text: "ابدأ الان"),
+              child: CustomButtons(
+                  onPressed: () {
+                    SharedPreferencesService.setBool(onBordSkip, true);
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                      LoginView.routeName,
+                      (Route<dynamic> route) => false,
+                    );
+                  },
+                  text: "ابدأ الان"),
             ),
           ),
-          const SizedBox(
-            height: 43,
-          ),
+          43.ph,
         ],
       ),
     );

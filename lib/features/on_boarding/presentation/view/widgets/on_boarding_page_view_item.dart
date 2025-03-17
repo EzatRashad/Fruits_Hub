@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fruit_hub/core/services/shared_preferences_service.dart';
 import 'package:fruit_hub/core/utils/utils.dart';
+import 'package:fruit_hub/features/auth/presentation/views/login_view.dart';
+
+import '../../../../../core/utils/constants.dart';
 
 class OnBoardingPageViewItem extends StatelessWidget {
   const OnBoardingPageViewItem(
@@ -46,9 +50,18 @@ class OnBoardingPageViewItem extends StatelessWidget {
                   visible: visible,
                   child: Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: Text(
-                      "تخط",
-                      style: Theme.of(context).textTheme.titleSmall,
+                    child: GestureDetector(
+                      onTap: () {
+                        SharedPreferencesService.setBool(onBordSkip, true);
+                        Navigator.of(context).pushNamedAndRemoveUntil(
+                          LoginView.routeName,
+                          (Route<dynamic> route) => false,
+                        );
+                      },
+                      child: Text(
+                        "تخط",
+                        style: Theme.of(context).textTheme.titleSmall,
+                      ),
                     ),
                   ),
                 ),

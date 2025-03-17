@@ -2,17 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit_hub/core/functions/on_generate_route.dart';
+import 'package:fruit_hub/features/auth/presentation/views/login_view.dart';
 import 'package:fruit_hub/features/on_boarding/presentation/view/on_boarding_view.dart';
 
+import 'core/services/shared_preferences_service.dart';
 import 'core/utils/app_theme.dart';
+import 'core/utils/constants.dart';
 import 'generated/l10n.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SharedPreferencesService.init();
+  bool? toLogin = SharedPreferencesService.getBool(onBordSkip);
+  runApp( MyApp(toLogin: toLogin!,));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({super.key, required this.toLogin});
+  final bool toLogin;
 
   // This widget is the root of your application.
   @override
@@ -24,6 +31,7 @@ class MyApp extends StatelessWidget {
       // Use builder only if you need to use library outside ScreenUtilInit context
       builder: (_, child) {
         return MaterialApp(
+          debugShowCheckedModeBanner: false,
           localizationsDelegates: [
             S.delegate,
             GlobalMaterialLocalizations.delegate,
@@ -36,7 +44,7 @@ class MyApp extends StatelessWidget {
           darkTheme: AppTheme.darkTheme,
           themeMode: AppTheme.currentTheme,
           onGenerateRoute: onGenerateRoute,
-          initialRoute: OnBoardingView.routeName,
+          initialRoute:toLogin? LoginView.routeName: OnBoardingView.routeName,
         );
       },
     );
