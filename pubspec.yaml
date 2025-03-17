@@ -28,7 +28,13 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  flutter_native_splash:
+  flutter_localizations:
+    sdk: flutter
+  flutter_native_splash: null
+  flutter_svg: null
+  flutter_bloc: null
+  flutter_screenutil: null
+  dots_indicator: null
   flutter:
     sdk: flutter
 
@@ -37,7 +43,7 @@ dependencies:
   cupertino_icons: ^1.0.8
 
 dev_dependencies:
-  flutter_launcher_icons:
+  flutter_launcher_icons: null
   flutter_test:
     sdk: flutter
 
@@ -50,7 +56,6 @@ dev_dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
 # The following section is specific to Flutter packages.
 flutter:
   # The following line ensures that the Material Icons font is
@@ -62,13 +67,10 @@ flutter:
   assets:
     - assets/images/
   #   - images/a_dot_ham.jpeg
-
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
-
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/to/asset-from-package
-
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
@@ -88,7 +90,15 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
-
+  fonts:
+    - family: cairo
+      fonts:
+        - asset: assets/fonts/Cairo-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Cairo-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Cairo-SemiBold.ttf
+          weight: 600
 flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
@@ -96,3 +106,6 @@ flutter_launcher_icons:
   min_sdk_android: 24 # android min sdk min:16, default 21
   adaptive_icon_background: "#FFFFFF"
   adaptive_icon_foreground: "assets/images/logo.png"
+
+flutter_intl:
+  enabled: true
