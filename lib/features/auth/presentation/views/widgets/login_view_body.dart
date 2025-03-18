@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fruit_hub/core/utils/app_colors.dart';
 import 'package:fruit_hub/core/utils/utils.dart';
 import 'package:fruit_hub/core/widgets/custom_buttons.dart';
@@ -9,9 +8,7 @@ import 'package:fruit_hub/features/auth/presentation/views/widgets/custom_divide
 import 'package:fruit_hub/features/auth/presentation/views/widgets/do_not_have_account.dart';
 import 'package:fruit_hub/features/auth/presentation/views/widgets/forget_password.dart';
 import 'package:fruit_hub/features/auth/presentation/views/widgets/social_media_section.dart';
-import 'package:fruit_hub/features/auth/presentation/views/widgets/social_widget.dart';
 
-import '../../../../../core/utils/app_images.dart';
 
 class LoginViewBody extends StatefulWidget {
   const LoginViewBody({super.key});
@@ -21,7 +18,8 @@ class LoginViewBody extends StatefulWidget {
 }
 
 class _LoginViewBodyState extends State<LoginViewBody> {
-  final TextEditingController controller = TextEditingController();
+  final TextEditingController email = TextEditingController();
+  final TextEditingController password = TextEditingController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -42,10 +40,10 @@ class _LoginViewBodyState extends State<LoginViewBody> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 CustomTextFormFiled(
-                    controller: controller, hintText: "البريد الإلكتروني"),
+                    controller: email, hintText: "البريد الإلكتروني"),
                 13.ph,
                 CustomTextFormFiled(
-                  controller: controller,
+                  controller: password,
                   hintText: "كلمة المرور",
                   obscureText: true,
                   suffixIcon:
