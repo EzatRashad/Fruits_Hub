@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_single_quotes
 class Assets {
   Assets._();
-  
+
   /// Assets for imagesFullSplash
   /// assets/images/full_splash.png
   static const String imagesFullSplash = "assets/images/full_splash.png";
@@ -20,18 +20,27 @@ class Assets {
 
   /// Assets for imagesPageViewItem1Back
   /// assets/images/page_view_item1_back.svg
-  static const String imagesPageViewItem1Back = "assets/images/page_view_item1_back.svg";
+  static const String imagesPageViewItem1Back =
+      "assets/images/page_view_item1_back.svg";
 
   /// Assets for imagesPageViewItem1Image
   /// assets/images/page_view_item1_image.svg
-  static const String imagesPageViewItem1Image = "assets/images/page_view_item1_image.svg";
+  static const String imagesPageViewItem1Image =
+      "assets/images/page_view_item1_image.svg";
 
   /// Assets for imagesPageViewItem2Back
   /// assets/images/page_view_item2_back.svg
-  static const String imagesPageViewItem2Back = "assets/images/page_view_item2_back.svg";
+  static const String imagesPageViewItem2Back =
+      "assets/images/page_view_item2_back.svg";
 
   /// Assets for imagesPageViewItem2Image
   /// assets/images/page_view_item2_image.svg
-  static const String imagesPageViewItem2Image = "assets/images/page_view_item2_image.svg";
-}
+  static const String imagesPageViewItem2Image =
+      "assets/images/page_view_item2_image.svg";
 
+  static const String imagesFace = "assets/images/face.svg";
+
+  static const String imagesApple = "assets/images/apple.svg";
+
+  static const String imagesGoogle = "assets/images/google.svg";
+}

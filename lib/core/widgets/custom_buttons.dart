@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit_hub/core/utils/app_colors.dart';
 
 class CustomButtons extends StatelessWidget {
@@ -9,17 +10,20 @@ class CustomButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 54,
+      height: 54.h,
       width: double.infinity,
       child: TextButton(
         style: TextButton.styleFrom(
             backgroundColor: AppColors.primaryColor,
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16))),
+                borderRadius: BorderRadius.circular(16.r))),
         onPressed: onPressed,
         child: Text(
           text,
-          style: const TextStyle(color: AppColors.white),
+          style: Theme.of(context)
+              .textTheme
+              .titleLarge!
+              .copyWith(color: AppColors.white,fontSize:16.sp ),
         ),
       ),
     );
