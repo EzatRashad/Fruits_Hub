@@ -8,6 +8,7 @@ import 'package:fruit_hub/core/widgets/custom_text_filed.dart';
 import 'package:fruit_hub/features/auth/presentation/views/widgets/custom_divider.dart';
 import 'package:fruit_hub/features/auth/presentation/views/widgets/do_not_have_account.dart';
 import 'package:fruit_hub/features/auth/presentation/views/widgets/forget_password.dart';
+import 'package:fruit_hub/features/auth/presentation/views/widgets/social_media_section.dart';
 import 'package:fruit_hub/features/auth/presentation/views/widgets/social_widget.dart';
 
 import '../../../../../core/utils/app_images.dart';
@@ -59,11 +60,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 16.ph,
                 CustomDivider(),
                 16.ph,
-                SocialWidget(text: "تسجيل بواسطة جوجل", image: Assets.imagesGoogle),
-                13.ph,
-                SocialWidget(text: "تسجيل بواسطة أبل", image: Assets.imagesApple),
-                13.ph,
-                SocialWidget(text: "تسجيل بواسطة فيسبوك", image: Assets.imagesFace),
+                SocialMediaSection(),
               ],
             ),
           ),
