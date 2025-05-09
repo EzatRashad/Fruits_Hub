@@ -9,7 +9,6 @@ import 'package:fruit_hub/features/auth/presentation/views/widgets/do_not_have_a
 import 'package:fruit_hub/features/auth/presentation/views/widgets/forget_password.dart';
 import 'package:fruit_hub/features/auth/presentation/views/widgets/social_media_section.dart';
 
-
 class LoginViewBody extends StatefulWidget {
   const LoginViewBody({super.key});
 
@@ -46,8 +45,11 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   controller: password,
                   hintText: "كلمة المرور",
                   obscureText: true,
-                  suffixIcon:
-                      Icon(Icons.remove_red_eye, color: AppColors.gray150,size: 24.sp,),
+                  suffixIcon: Icon(
+                    Icons.remove_red_eye,
+                    color: AppColors.gray150,
+                    size: 24.sp,
+                  ),
                 ),
                 13.ph,
                 ForgetPassword(),

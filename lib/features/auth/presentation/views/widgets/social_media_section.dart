@@ -11,11 +11,11 @@ class SocialMediaSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SocialWidget(text: "تسجيل بواسطة جوجل", image: Assets.imagesGoogle),
+        SocialWidget(text: "تسجيل بواسطة جوجل", image: Assets.assetsImagesGoogle),
         13.ph,
-        SocialWidget(text: "تسجيل بواسطة أبل", image: Assets.imagesApple),
+        SocialWidget(text: "تسجيل بواسطة أبل", image: Assets.assetsImagesApple),
         13.ph,
-        SocialWidget(text: "تسجيل بواسطة فيسبوك", image: Assets.imagesFace),
+        SocialWidget(text: "تسجيل بواسطة فيسبوك", image: Assets.assetsImagesFace),
       ],
     );
   }

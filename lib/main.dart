@@ -13,8 +13,9 @@ import 'generated/l10n.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SharedPreferencesService.init();
-  bool? toLogin = SharedPreferencesService.getBool(onBordSkip);
-  runApp( MyApp(toLogin: toLogin!,));
+  bool toLogin = SharedPreferencesService.getBool(onBordSkip)?? false;
+ 
+  runApp( MyApp(toLogin: toLogin,));
 }
 
 class MyApp extends StatelessWidget {

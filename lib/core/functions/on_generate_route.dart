@@ -20,3 +20,5 @@ Route onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => const Scaffold());
   }
 }
+//    Navigator.pushReplacementNamed(context, LoginView.routeName);
+//Navigator.pushNamed(context, SignupView.routeName);
