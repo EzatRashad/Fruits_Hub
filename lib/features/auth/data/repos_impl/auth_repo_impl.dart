@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:fruit_hub/core/services/firebase_services/firebase_auth_services.dart';
 import 'package:fruit_hub/core/utils/custom_exeptions.dart';
@@ -18,6 +20,7 @@ class AuthRepoImpl extends AuthRepo {
     }on CustomException catch (e) {
       return Left(ServerFailure(e.message));
     } catch (e) {
+     log( 'Error in AuthRepoImpl.createUserWithEmailAndPassword: ${e.toString()}');
       return Left(ServerFailure('حدث خطأ أثناء إنشاء الحساب'));
     }
 
