@@ -4,23 +4,27 @@ import 'package:fruit_hub/core/utils/app_colors.dart';
 
 class CustomTextFormFiled extends StatelessWidget {
   const CustomTextFormFiled(
+
       {super.key,
       required this.controller,
       this.obscureText = false,
       required this.hintText,
       this.suffixIcon,
+      this.onSaved,
       this.validator,  bool obcureText=false});
   final String hintText;
   final TextEditingController controller;
   final bool obscureText;
   final Widget? suffixIcon;
   final String? Function(String?)? validator;
+  final void Function(String?)? onSaved;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
        style: TextStyle(fontSize: 16.sp),
       validator: validator,
+      onSaved: onSaved  ,
       cursorColor: AppColors.primaryColor,
       controller: controller,
       obscureText: obscureText,

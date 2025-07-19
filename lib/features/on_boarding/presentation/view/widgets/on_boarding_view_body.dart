@@ -5,7 +5,7 @@ import 'package:fruit_hub/core/utils/app_colors.dart';
 import 'package:fruit_hub/core/utils/utils.dart';
 import 'package:fruit_hub/features/on_boarding/presentation/view/widgets/on_boarding_page_view.dart';
 
-import '../../../../../core/services/shared_preferences_service.dart';
+import '../../../../../core/services/shared_pref_service/shared_preferences_service.dart';
 import '../../../../../core/utils/constants.dart';
 import '../../../../../core/widgets/custom_buttons.dart';
 
