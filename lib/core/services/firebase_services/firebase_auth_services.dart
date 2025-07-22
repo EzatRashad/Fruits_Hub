@@ -43,12 +43,13 @@ class FirebaseAuthServices {
     }
   }
 
-  Future<void> signIn(String email, String password) async {
+  Future<User> loginWithEmailAndPassword(String email, String password) async {
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
+      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
+      return credential.user!;
     } on FirebaseAuthException catch (e) {
       log('Error in FirebaseAuthServices.signIn: ${e.toString()} , Error code: ${e.code} ');
 

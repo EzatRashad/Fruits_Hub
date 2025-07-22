@@ -15,26 +15,32 @@ class AuthRepoImpl extends AuthRepo {
   Future<Either<Failure, UserEntity>> createUserWithEmailAndPassword(
       String email, String password, String name) async {
     try {
-      var user=  await _firebaseAuthServices.createUserWithEmailAndPassword(email, password);
-    return Right(UserModel.fromFirebaseUser(user));
-    }on CustomException catch (e) {
+      var user = await _firebaseAuthServices.createUserWithEmailAndPassword(
+          email, password);
+      return Right(UserModel.fromFirebaseUser(user));
+    } on CustomException catch (e) {
       return Left(ServerFailure(e.message));
     } catch (e) {
-     log( 'Error in AuthRepoImpl.createUserWithEmailAndPassword: ${e.toString()}');
+      log('Error in AuthRepoImpl.createUserWithEmailAndPassword: ${e.toString()}');
       return Left(ServerFailure('حدث خطأ أثناء إنشاء الحساب'));
     }
-
-
-  }
-
-  @override
-  Future<Either<Failure, UserEntity>> signInWithEmailAndPassword(
-      String email, String password) {
-    throw UnimplementedError();
   }
 
   @override
   Future<void> signOut() {
     throw UnimplementedError();
   }
+
+  @override
+  Future<Either<Failure, UserEntity>> loginWithEmailAndPassword(
+      String email, String password)async {
+        try {
+          var user = await _firebaseAuthServices.loginWithEmailAndPassword(
+              email, password);
+          return Right(UserModel.fromFirebaseUser(user));
+        } catch (e) {
+          log('Error in AuthRepoImpl.loginWithEmailAndPassword: ${e.toString()}');
+          return Left(ServerFailure('حدث خطأ أثناء تسجيل الدخول'));
+        }
+      }
 }
