@@ -4,14 +4,14 @@ import 'package:fruit_hub/core/utils/app_colors.dart';
 
 class CustomTextFormFiled extends StatelessWidget {
   const CustomTextFormFiled(
-
       {super.key,
       required this.controller,
       this.obscureText = false,
       required this.hintText,
       this.suffixIcon,
       this.onSaved,
-      this.validator,  bool obcureText=false});
+      this.validator,
+      bool obcureText = false});
   final String hintText;
   final TextEditingController controller;
   final bool obscureText;
@@ -22,19 +22,19 @@ class CustomTextFormFiled extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-       style: TextStyle(fontSize: 16.sp),
+      onTapOutside: (event) => FocusManager.instance.primaryFocus!.unfocus(),
+      style: TextStyle(fontSize: 16.sp),
       validator: validator,
-      onSaved: onSaved  ,
+      onSaved: onSaved,
       cursorColor: AppColors.primaryColor,
       controller: controller,
       obscureText: obscureText,
       decoration: InputDecoration(
         filled: true,
-        
         fillColor: Color(0xFFF9FAFA),
         suffixIcon: suffixIcon,
         hintText: hintText,
-       isDense: true,
+        isDense: true,
         hintStyle: Theme.of(context).textTheme.titleSmall,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(4.r),
@@ -44,19 +44,18 @@ class CustomTextFormFiled extends StatelessWidget {
           ),
         ),
         focusedBorder: OutlineInputBorder(
-           borderRadius: BorderRadius.circular(4.r),
+          borderRadius: BorderRadius.circular(4.r),
           borderSide: BorderSide(
             color: AppColors.primaryColor,
             width: 1,
           ),
         ),
-      
         errorMaxLines: 3,
         errorStyle: Theme.of(context).textTheme.titleSmall!.copyWith(
               color: AppColors.primaryColor,
             ),
         errorBorder: OutlineInputBorder(
-           borderRadius: BorderRadius.circular(4.r),
+          borderRadius: BorderRadius.circular(4.r),
           borderSide: BorderSide(
             color: AppColors.gray100,
             width: .5,

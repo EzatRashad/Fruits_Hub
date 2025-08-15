@@ -37,7 +37,10 @@ dependencies:
   flutter_screenutil: null
   firebase_auth: null
   fluttertoast: null
-  modal_progress_hud_nsn : null
+  cached_network_image:
+  video_player:
+  chewie:
+  modal_progress_hud_nsn: null
   get_it: null
   dartz: null
   dots_indicator: null
