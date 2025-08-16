@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruit_hub/core/utils/utils.dart';
+import 'package:fruit_hub/features/auth/presentation/view_model/login_cubit/login_cubit.dart';
 import 'package:fruit_hub/features/auth/presentation/views/widgets/social_widget.dart';
 
 import '../../../../../core/utils/app_images.dart';
@@ -11,11 +13,17 @@ class SocialMediaSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SocialWidget(text: "تسجيل بواسطة جوجل", image: Assets.assetsImagesGoogle),
+        SocialWidget(
+            text: "تسجيل بواسطة جوجل",
+            image: Assets.assetsImagesGoogle,
+            onTap: () {
+              context.read<LoginCubit>().signInWithGoogle();
+            }),
         13.ph,
         SocialWidget(text: "تسجيل بواسطة أبل", image: Assets.assetsImagesApple),
         13.ph,
-        SocialWidget(text: "تسجيل بواسطة فيسبوك", image: Assets.assetsImagesFace),
+        SocialWidget(
+            text: "تسجيل بواسطة فيسبوك", image: Assets.assetsImagesFace),
       ],
     );
   }

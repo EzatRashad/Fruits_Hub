@@ -37,10 +37,10 @@ dependencies:
   flutter_screenutil: null
   firebase_auth: null
   fluttertoast: null
-  cached_network_image:
-  google_sign_in:
-  video_player:
-  chewie:
+  cached_network_image: null
+  google_sign_in: ^6.3.0
+  video_player: null
+  chewie: null
   modal_progress_hud_nsn: null
   get_it: null
   dartz: null
