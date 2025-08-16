@@ -38,6 +38,7 @@ dependencies:
   firebase_auth: null
   fluttertoast: null
   cached_network_image:
+  google_sign_in:
   video_player:
   chewie:
   modal_progress_hud_nsn: null

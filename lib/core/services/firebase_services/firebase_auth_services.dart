@@ -59,9 +59,9 @@ class FirebaseAuthServices {
         case 'user-disabled':
           throw CustomException('تم تعطيل حساب هذا المستخدم.');
         case 'user-not-found':
-          throw CustomException('لا يوجد مستخدم مسجل بهذا البريد الإلكتروني.');
-        case 'wrong-password':
-          throw CustomException('كلمة المرور المدخلة غير صحيحة.');
+         case 'wrong-password':
+         case 'invalid-credential':
+          throw CustomException('البريد الإلكتروني أو كلمة المرور غير صحيحة.');
         case 'network-request-failed':
           throw CustomException(
               'فشل الاتصال بالشبكة. تحقق من اتصال الإنترنت الخاص بك.');

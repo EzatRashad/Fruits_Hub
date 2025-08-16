@@ -38,6 +38,8 @@ class AuthRepoImpl extends AuthRepo {
           var user = await _firebaseAuthServices.loginWithEmailAndPassword(
               email, password);
           return Right(UserModel.fromFirebaseUser(user));
+        } on CustomException catch (e) {
+          return Left(ServerFailure(e.message));
         } catch (e) {
           log('Error in AuthRepoImpl.loginWithEmailAndPassword: ${e.toString()}');
           return Left(ServerFailure('حدث خطأ أثناء تسجيل الدخول'));
