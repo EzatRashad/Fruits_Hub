@@ -1,3 +1,4 @@
 const onBordSkip = 'onBordSkip';
-const toLayout='toLayout';
-const myToken='myToken';
+const logined = 'logined';
+const myToken = 'myToken';
+const addUserDataEndpoint = 'users';

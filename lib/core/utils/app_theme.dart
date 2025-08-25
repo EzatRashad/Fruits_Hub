@@ -6,7 +6,7 @@ class AppTheme {
   static bool dTheme = false;
   static ThemeMode currentTheme = ThemeMode.light;
   static ThemeData lightTheme = ThemeData(
-    fontFamily: "cairo" ,
+    fontFamily: "cairo",
     scaffoldBackgroundColor: AppColors.white,
     //  primaryColor: ColorsManager.white,
     appBarTheme: AppBarTheme(
@@ -47,7 +47,7 @@ class AppTheme {
   );
   //-------------------------------------------------------------------------------------------------
   static ThemeData darkTheme = ThemeData(
-    fontFamily: "cairo" ,
+    fontFamily: "cairo",
     scaffoldBackgroundColor: AppColors.black,
     //  primaryColor: ColorsManager.white,
     appBarTheme: AppBarTheme(

@@ -16,10 +16,11 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
 
-  setup();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+    setup();
+
   await SharedPreferencesService.init();
 
   runApp(const MyApp());

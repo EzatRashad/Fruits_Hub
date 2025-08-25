@@ -4,7 +4,9 @@ import 'package:fruit_hub/core/widgets/default_image_widget.dart';
 import 'package:fruit_hub/core/services/shared_pref_service/shared_preferences_service.dart';
 import 'package:fruit_hub/core/utils/constants.dart';
 import 'package:fruit_hub/features/auth/presentation/views/login_view.dart';
+import 'package:fruit_hub/features/layout/presentation/view/layout_view.dart';
 import 'package:fruit_hub/features/on_boarding/presentation/view/on_boarding_view.dart';
+
 class SplashScreenView extends StatelessWidget {
   static const String routeName = '/splash';
 
@@ -50,9 +52,12 @@ class _SplashScreenViewBodyState extends State<SplashScreenViewBody>
 
     Future.delayed(const Duration(seconds: 3), () {
       bool toLogin = SharedPreferencesService.getBool(onBordSkip) ?? false;
+      bool toLayout = SharedPreferencesService.getBool(logined) ?? false;
 
       Navigator.of(context).pushNamedAndRemoveUntil(
-        toLogin ? LoginView.routeName : OnBoardingView.routeName,
+        toLayout
+            ? LayoutView.routeName
+            : (toLogin ? LoginView.routeName : OnBoardingView.routeName),
         (route) => false,
       );
     });

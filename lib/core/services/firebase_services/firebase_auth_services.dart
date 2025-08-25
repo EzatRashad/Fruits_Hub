@@ -1,5 +1,5 @@
 import 'dart:developer';
-
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fruit_hub/core/utils/custom_exeptions.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -44,6 +44,15 @@ class FirebaseAuthServices {
     }
   }
 
+  Future deleteUser() async {
+    try {
+      await FirebaseAuth.instance.currentUser?.delete();
+    } catch (e) {
+      log('Error in FirebaseAuthServices.deleteUser: ${e.toString()}');
+      throw CustomException('حدث خطأ أثناء حذف المستخدم. حاول مرة أخرى لاحقًا.');
+    }
+  }
+
   Future<User> loginWithEmailAndPassword(String email, String password) async {
     try {
       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
@@ -60,8 +69,8 @@ class FirebaseAuthServices {
         case 'user-disabled':
           throw CustomException('تم تعطيل حساب هذا المستخدم.');
         case 'user-not-found':
-         case 'wrong-password':
-         case 'invalid-credential':
+        case 'wrong-password':
+        case 'invalid-credential':
           throw CustomException('البريد الإلكتروني أو كلمة المرور غير صحيحة.');
         case 'network-request-failed':
           throw CustomException(
@@ -78,23 +87,48 @@ class FirebaseAuthServices {
     }
   }
 
-
   Future<User> signInWithGoogle() async {
-    // Trigger the authentication flow
-    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+   try{
+     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
-    // Obtain the auth details from the request
-    final GoogleSignInAuthentication? googleAuth =
-        await googleUser?.authentication;
+      final GoogleSignInAuthentication? googleAuth =
+          await googleUser?.authentication;
 
-    // Create a new credential
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth?.accessToken,
-      idToken: googleAuth?.idToken,
-    );
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
 
-    // Once signed in, return the UserCredential
-    return (await FirebaseAuth.instance.signInWithCredential(credential)).user!;
+      return (await FirebaseAuth.instance.signInWithCredential(credential))
+          .user!;
+   } on FirebaseAuthException catch (e) {
+     log('CustomException in FirebaseAuthServices.signInWithGoogle: ${e.message}');
+     throw CustomException('حدث خطأ أثناء تسجيل الدخول باستخدام جوجل. حاول مرة أخرى لاحقًا.');
+   }
+   catch(e){
+     log('Error in FirebaseAuthServices.signInWithGoogle: ${e.toString()}');
+     throw CustomException('حدث خطأ أثناء تسجيل الدخول باستخدام جوجل. حاول مرة أخرى لاحقًا.');
+   }
+  }
+
+  Future<User> signInWithFacebook() async {
+   try{
+     final LoginResult loginResult = await FacebookAuth.instance.login();
+
+    final OAuthCredential facebookAuthCredential =
+        FacebookAuthProvider.credential(
+            loginResult.accessToken?.tokenString ?? "");
+
+    return (await FirebaseAuth.instance
+            .signInWithCredential(facebookAuthCredential))
+        .user!;
+   }on FirebaseAuthException catch (e) {
+     log('CustomException in FirebaseAuthServices.signInWithFacebook: ${e.message}');
+     throw CustomException('حدث خطأ أثناء تسجيل الدخول باستخدام فيسبوك. حاول مرة أخرى لاحقًا.');
+   } catch (e) {
+     log('Error in FirebaseAuthServices.signInWithFacebook: ${e.toString()}');
+     throw CustomException('حدث خطأ أثناء تسجيل الدخول باستخدام فيسبوك. حاول مرة أخرى لاحقًا.');
+   }
   }
 
   Future<void> signOut() async {

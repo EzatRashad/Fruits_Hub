@@ -18,11 +18,15 @@ class SocialMediaSection extends StatelessWidget {
             image: Assets.assetsImagesGoogle,
             onTap: () {
               context.read<LoginCubit>().signInWithGoogle();
+              
             }),
         13.ph,
         SocialWidget(text: "تسجيل بواسطة أبل", image: Assets.assetsImagesApple),
         13.ph,
         SocialWidget(
+            onTap: () {
+              context.read<LoginCubit>().signInWithFacebook();
+            },
             text: "تسجيل بواسطة فيسبوك", image: Assets.assetsImagesFace),
       ],
     );
