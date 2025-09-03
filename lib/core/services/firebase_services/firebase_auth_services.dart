@@ -63,7 +63,7 @@ class FirebaseAuthServices {
     } on FirebaseAuthException catch (e) {
       log('Error in FirebaseAuthServices.signIn: ${e.toString()} , Error code: ${e.code} ');
 
-      switch (e.code) {
+      switch (e.code) { 
         case 'invalid-email':
           throw CustomException('البريد الإلكتروني غير صالح.');
         case 'user-disabled':

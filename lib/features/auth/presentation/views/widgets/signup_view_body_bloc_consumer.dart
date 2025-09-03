@@ -5,8 +5,8 @@ import 'package:fruit_hub/core/utils/constants.dart';
 import 'package:fruit_hub/core/utils/utils.dart';
 import 'package:fruit_hub/features/auth/presentation/view_model/signup_cubit/signup_cubit.dart';
 import 'package:fruit_hub/features/auth/presentation/view_model/signup_cubit/signup_state.dart';
+import 'package:fruit_hub/features/auth/presentation/views/login_view.dart';
 import 'package:fruit_hub/features/auth/presentation/views/widgets/signup_view_body.dart';
-import 'package:fruit_hub/features/layout/presentation/view/layout_view.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class SignupViewBodyBlocConsumer extends StatelessWidget {
@@ -20,7 +20,7 @@ class SignupViewBodyBlocConsumer extends StatelessWidget {
           "تم إنشاء الحساب بنجاح"
               .showSnackbar(context: context, isSuccess: true);
           Navigator.of(context).pushNamedAndRemoveUntil(
-            LayoutView.routeName,
+            LoginView.routeName,
             (Route<dynamic> route) => false,
           );
           SharedPreferencesService.setBool(logined, true);
