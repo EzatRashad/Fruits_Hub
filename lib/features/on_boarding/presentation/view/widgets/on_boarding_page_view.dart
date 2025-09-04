@@ -22,7 +22,7 @@ class OnBoardingPageView extends StatelessWidget {
               Text(
                 'HUB',
                 style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                      color: AppColors.secondrtColor,
+                      color: AppColors.secondryColor,
                     ),
               ),
               Text(
