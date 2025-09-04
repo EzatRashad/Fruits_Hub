@@ -39,10 +39,12 @@ dependencies:
   fluttertoast: null
   cached_network_image: null
   google_sign_in: ^6.3.0
+  flutter_svg_provider:
   video_player: null
   cloud_firestore:
   chewie: null
   flutter_facebook_auth:
+  svg_flutter:
   sign_in_with_apple:
   modal_progress_hud_nsn: null
   get_it: null

@@ -14,6 +14,10 @@ class Assets {
   /// assets/images/face.svg
   static const String assetsImagesFace = "assets/images/face.svg";
 
+  /// Assets for assetsImagesFeaturedBack
+  /// assets/images/featured_back.svg
+  static const String assetsImagesFeaturedBack = "assets/images/featured_back.svg";
+
   /// Assets for assetsImagesFilter
   /// assets/images/filter.svg
   static const String assetsImagesFilter = "assets/images/filter.svg";
