@@ -34,6 +34,10 @@ class Assets {
   /// assets/images/logo_light_plus.png
   static const String assetsImagesLogoLightPlus = "assets/images/logo_light_plus.png";
 
+  /// Assets for assetsImagesNotification
+  /// assets/images/notification.svg
+  static const String assetsImagesNotification = "assets/images/notification.svg";
+
   /// Assets for assetsImagesPageViewItem1Back
   /// assets/images/page_view_item1_back.svg
   static const String assetsImagesPageViewItem1Back = "assets/images/page_view_item1_back.svg";
@@ -49,5 +53,9 @@ class Assets {
   /// Assets for assetsImagesPageViewItem2Image
   /// assets/images/page_view_item2_image.svg
   static const String assetsImagesPageViewItem2Image = "assets/images/page_view_item2_image.svg";
+
+  /// Assets for assetsImagesProfile
+  /// assets/images/profile.png
+  static const String assetsImagesProfile = "assets/images/profile.png";
 }
 
