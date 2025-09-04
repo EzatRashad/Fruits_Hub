@@ -11,22 +11,20 @@ class HomeAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.white,
       elevation: 0,
-      floating: true, // يظهر عند السحب
-      snap: true, // يثبت بشكل ناعم عند السحب
+      floating: true, 
+      snap: true,           
       expandedHeight: 80.h,
       flexibleSpace: FlexibleSpaceBar(
         background: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
           child: Row(
             children: [
-              /// صورة البروفايل
               DefaultImageWidget(Assets.assetsImagesProfile),
 
               12.horizontalSpace,
 
-              /// نصوص التحية واسم المستخدم
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -47,7 +45,6 @@ class HomeAppBar extends StatelessWidget {
 
               const Spacer(),
 
-              /// أيقونة الإشعارات
               Container(
                 padding: EdgeInsets.all(8.r),
                 decoration: BoxDecoration(
