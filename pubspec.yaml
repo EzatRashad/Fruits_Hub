@@ -42,6 +42,7 @@ dependencies:
   flutter_svg_provider:
   video_player: null
   cloud_firestore:
+  smooth_page_indicator:
   chewie: null
   flutter_facebook_auth:
   svg_flutter:
