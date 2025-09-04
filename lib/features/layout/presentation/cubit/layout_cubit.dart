@@ -5,6 +5,7 @@ import 'layout_states.dart';
 
 class LayoutCubit extends Cubit<LayoutStates> {
   LayoutCubit() : super(LayoutInitialState());
+  static LayoutCubit get(context) => BlocProvider.of(context);
   int selectedIndex = 0;
   List<Widget> screens = [
    Scaffold(

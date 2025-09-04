@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_hub/features/home/presentation/views/home_view.dart';
 import 'package:fruit_hub/features/layout/presentation/view/layout_view.dart';
 import 'package:fruit_hub/features/on_boarding/presentation/view/on_boarding_view.dart';
 import 'package:fruit_hub/features/splash_screen/presentation/splash_screen_view/splash_screen_view.dart';
@@ -18,6 +19,8 @@ Route onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => const SplashScreenView());
       case LayoutView.routeName:
       return  MaterialPageRoute(builder: (_) => const LayoutView());
+      case HomeView.routeName:
+      return  MaterialPageRoute(builder: (_) =>  const HomeView());
     default:
       return MaterialPageRoute(builder: (_) => const Scaffold());
   }
