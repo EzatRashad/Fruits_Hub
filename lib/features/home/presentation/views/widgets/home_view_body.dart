@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fruit_hub/core/utils/utils.dart';
+import 'package:fruit_hub/core/widgets/search_txt_filed.dart';
 import 'package:fruit_hub/features/home/presentation/views/widgets/home_app_bar.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -7,11 +9,17 @@ class HomeViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: const Scaffold(
+      child:   Scaffold(
         body: CustomScrollView(
           slivers: [
             SliverToBoxAdapter(
-              child: HomeAppBar(),
+              child: Column(
+                children: [
+                  HomeAppBar(),
+                  16.ph,
+                  SearchTextField(),
+                ],
+              ),
             ),
           ],
         ),

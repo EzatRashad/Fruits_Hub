@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit_hub/core/utils/app_colors.dart';
 import 'package:fruit_hub/core/utils/app_images.dart';
 import 'package:fruit_hub/core/widgets/default_image_widget.dart';
@@ -15,14 +16,14 @@ class HomeAppBar extends StatelessWidget {
         style: Theme.of(context)
             .textTheme
             .titleMedium!
-            .copyWith(color: AppColors.gray150, fontSize: 16),
+            .copyWith(color: AppColors.gray150, fontSize: 16.sp),
       ),
       subtitle: Text(
         userName ?? "",
         style: Theme.of(context).textTheme.bodyLarge,
       ),
       trailing: Container(
-        padding: EdgeInsets.all(8),
+        padding: EdgeInsets.all(8.r),
         decoration: BoxDecoration(
             color: AppColors.primaryColor.withOpacity(0.1),
             shape: BoxShape.circle),
