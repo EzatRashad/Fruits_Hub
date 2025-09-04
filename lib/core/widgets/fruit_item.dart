@@ -48,49 +48,53 @@ class FruitItem extends StatelessWidget {
               ),
             ],
           ),
-
-          ListTile(
-            contentPadding: EdgeInsets.zero,
-            title: Text(
-              "فراولة",
-              textAlign: TextAlign.right,
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
-            subtitle: Text.rich(
-              TextSpan(
-                children: [
-                  TextSpan(
-                    text: '10 جنية ',
-                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                          color: AppColors.secondryColor,
-                          fontSize: 13.sp,
-                        ),
-                  ),
-                  TextSpan(
-                    text: '/',
-                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                          color: AppColors.secondryColor,
-                          fontSize: 13.sp,
-                        ),
-                  ),
-                  TextSpan(
-                    text: 'كيلو',
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: AppColors.secondryLight,
-                          fontSize: 13.sp,
-                        ),
-                  ),
-                ],
+          const Spacer(),
+          Padding(
+            padding: EdgeInsets.all(4.0.r),
+            child: ListTile(
+              contentPadding: EdgeInsets.zero,
+              title: Text(
+                "فراولة",
+                maxLines: 2,
+                textAlign: TextAlign.right,
+                style: Theme.of(context).textTheme.titleMedium,
               ),
-              textAlign: TextAlign.right,
-            ),
-
-            /// زر الإضافة
-            trailing: GestureDetector(
-              onTap: () {},
-              child: const CircleAvatar(
-                backgroundColor: AppColors.primaryColor,
-                child: Icon(Icons.add, color: Colors.white),
+              subtitle: Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(
+                      text: '10 جنية ',
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                            color: AppColors.secondryColor,
+                            fontSize: 13.sp,
+                          ),
+                    ),
+                    TextSpan(
+                      text: '/',
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                            color: AppColors.secondryColor,
+                            fontSize: 13.sp,
+                          ),
+                    ),
+                    TextSpan(
+                      text: 'كيلو',
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                            color: AppColors.secondryLight,
+                            fontSize: 13.sp,
+                          ),
+                    ),
+                  ],
+                ),
+                textAlign: TextAlign.right,
+              ),
+            
+              /// زر الإضافة
+              trailing: GestureDetector(
+                onTap: () {},
+                child: const CircleAvatar(
+                  backgroundColor: AppColors.primaryColor,
+                  child: Icon(Icons.add, color: Colors.white),
+                ),
               ),
             ),
           ),
