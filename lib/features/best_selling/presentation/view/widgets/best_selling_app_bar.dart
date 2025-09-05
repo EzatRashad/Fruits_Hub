@@ -18,6 +18,12 @@ class BestSellingAppBar extends StatelessWidget {
       floating: true,
       snap: true,
        leading: BackWidget(),
+       title: Text(
+        "الأكثر مبيعًا",
+        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+              fontSize: 19.sp,
+              ),
+      ),
       actions: [
         Container(
           padding: EdgeInsets.all(8.r),
