@@ -6,6 +6,7 @@ import 'package:fruit_hub/features/splash_screen/presentation/splash_screen_view
 
 import '../../features/auth/presentation/views/login_view.dart';
 import '../../features/auth/presentation/views/signup_view.dart';
+import '../../features/best_selling/presentation/view/best_selling_view.dart';
 
 Route onGenerateRoute(RouteSettings settings) {
   switch (settings.name) {
@@ -21,6 +22,8 @@ Route onGenerateRoute(RouteSettings settings) {
       return  MaterialPageRoute(builder: (_) => const LayoutView());
       case HomeView.routeName:
       return  MaterialPageRoute(builder: (_) =>  const HomeView());
+       case BestSellingView.routeName:
+      return MaterialPageRoute(builder: (_) => const BestSellingView());
     default:
       return MaterialPageRoute(builder: (_) => const Scaffold());
   }

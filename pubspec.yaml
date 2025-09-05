@@ -39,6 +39,7 @@ dependencies:
   fluttertoast: null
   cached_network_image: null
   google_sign_in: ^6.3.0
+  shimmer:
   flutter_svg_provider:
   video_player: null
   cloud_firestore:
