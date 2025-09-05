@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruit_hub/features/layout/presentation/view/widgets/custom_bottom_navigation_bar.dart';
 import '../../cubit/layout_cubit.dart';
 import '../../cubit/layout_states.dart';
 
@@ -20,16 +21,10 @@ class _LayoutViewBodyState extends State<LayoutViewBody> {
       listener: (context, state) {},
       builder: (context, state) {
         return Scaffold(
-            // bottomNavigationBar: BottomNavigationBar(
-            //     onTap: (index) {
-            //       layoutCubit.changeIndex(index);
-            //     },
-            //     items:[
-              
-            // ] 
-            
-            // ),
-            body: layoutCubit.screens[layoutCubit.selectedIndex]);
+          bottomNavigationBar: CustomBottomNavigationBar(onItemTapped: (int value) {
+            layoutCubit.changeIndex(value);
+          }),
+          body: layoutCubit.screens[layoutCubit.selectedIndex]);
       },
     );
   }

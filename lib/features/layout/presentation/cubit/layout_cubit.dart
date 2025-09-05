@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
- 
+import 'package:fruit_hub/features/home/presentation/views/home_view.dart';
+
 import 'layout_states.dart';
 
 class LayoutCubit extends Cubit<LayoutStates> {
@@ -8,11 +9,7 @@ class LayoutCubit extends Cubit<LayoutStates> {
   static LayoutCubit get(context) => BlocProvider.of(context);
   int selectedIndex = 0;
   List<Widget> screens = [
-   Scaffold(
-      body: Center(
-        child: Text("1"),
-      ),
-    ),
+    HomeView(),
     Scaffold(
       body: Center(
         child: Text("2"),
@@ -21,6 +18,11 @@ class LayoutCubit extends Cubit<LayoutStates> {
     Scaffold(
       body: Center(
         child: Text("3"),
+      ),
+    ),
+    Scaffold(
+      body: Center(
+        child: Text("4"),
       ),
     ),
   ];

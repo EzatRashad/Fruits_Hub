@@ -5,8 +5,8 @@ import 'package:fruit_hub/core/utils/constants.dart';
 import 'package:fruit_hub/core/utils/utils.dart';
 import 'package:fruit_hub/features/auth/presentation/view_model/login_cubit/login_cubit.dart';
 import 'package:fruit_hub/features/auth/presentation/view_model/login_cubit/login_state.dart';
-import 'package:fruit_hub/features/home/presentation/views/home_view.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import '../../../../layout/presentation/view/layout_view.dart';
 import 'login_view_body.dart';
 
 class LoginViewBodyBlocConsumer extends StatelessWidget {
@@ -20,11 +20,10 @@ class LoginViewBodyBlocConsumer extends StatelessWidget {
           "تم تسجيل الدخول بنجاح"
               .showSnackbar(context: context, isSuccess: true);
           Navigator.of(context).pushNamedAndRemoveUntil(
-            HomeView.routeName,
+            LayoutView.routeName,
             (Route<dynamic> route) => false,
           );
-                              SharedPreferencesService.setBool(logined, true);
-
+          SharedPreferencesService.setBool(logined, true);
         } else if (state is LoginFailure) {
           state.errorMessage.showSnackbar(context: context, isSuccess: false);
         }
