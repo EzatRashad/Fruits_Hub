@@ -1,0 +1,2 @@
+D:/D Partion/flutter projects/fruit_hub/android/app/.cxx/Debug/1b144k40/armeabi-v7a/CMakeFiles/edit_cache.dir
+D:/D Partion/flutter projects/fruit_hub/android/app/.cxx/Debug/1b144k40/armeabi-v7a/CMakeFiles/rebuild_cache.dir

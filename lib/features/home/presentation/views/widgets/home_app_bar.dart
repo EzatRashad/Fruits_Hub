@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fruit_hub/core/functions/get_user_local.dart';
 import 'package:fruit_hub/core/utils/app_colors.dart';
 import 'package:fruit_hub/core/utils/app_images.dart';
 import 'package:fruit_hub/core/widgets/default_image_widget.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({super.key});
-  final String? userName = "Ezat Rashad";
-
+ 
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
@@ -37,7 +37,7 @@ class HomeAppBar extends StatelessWidget {
                         .copyWith(color: AppColors.gray150, fontSize: 16.sp),
                   ),
                   Text(
-                    userName ?? "",
+                    getUserLocal().name  ,
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
                 ],

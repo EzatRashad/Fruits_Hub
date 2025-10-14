@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
  
 import 'package:dartz/dartz.dart';
@@ -10,6 +11,7 @@ import 'package:fruit_hub/features/auth/data/models/user_model.dart';
 import 'package:fruit_hub/features/auth/domain/entities/user_entity.dart';
 import 'package:fruit_hub/features/auth/domain/repos/auth_repo.dart';
 
+import '../../../../core/services/shared_pref_service/shared_preferences_service.dart';
 import '../../../../core/utils/constants.dart';
 
 class AuthRepoImpl extends AuthRepo {
@@ -52,7 +54,7 @@ class AuthRepoImpl extends AuthRepo {
       var user = await _firebaseAuthServices.loginWithEmailAndPassword(
           email, password);
       var userEntity = await getUserData(uId: user.uid);
-
+      saveUserData(user: userEntity);
       return Right(userEntity);
     } on CustomException catch (e) {
       return Left(ServerFailure(e.message));
@@ -68,6 +70,7 @@ class AuthRepoImpl extends AuthRepo {
     try {
       user = await _firebaseAuthServices.signInWithGoogle();
       var userEntity = UserModel.fromFirebaseUser(user);
+      saveUserData(user:  userEntity);
       bool userExists = await _databaseService.checkDataExists(
           docId: user.uid, path: getUserDataEndpoint);
       if (userExists) {
@@ -115,7 +118,7 @@ class AuthRepoImpl extends AuthRepo {
   Future addUserData({required UserEntity user}) async {
     try {
       await _databaseService.addData(
-          path: addUserDataEndpoint, data: user.toMap(), docId: user.uId);
+          path: addUserDataEndpoint, data: UserModel.fromEntity(user).toMap(), docId: user.uId);
     } catch (e) {
       log('Error in AuthRepoImpl.addUserData: ${e.toString()}');
     }
@@ -128,5 +131,12 @@ class AuthRepoImpl extends AuthRepo {
       path: getUserDataEndpoint,
     );
     return (UserModel.fromJson(data));
+  }
+  
+  @override
+  Future saveUserData({required UserEntity user}) async{
+    var jsonData = jsonEncode(UserModel.fromEntity(user).toMap());
+    SharedPreferencesService.setString(userData, jsonData);
+
   }
 }
