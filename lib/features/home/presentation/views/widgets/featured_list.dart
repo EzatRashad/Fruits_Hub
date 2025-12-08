@@ -21,18 +21,22 @@ class _FeaturedListState extends State<FeaturedList> {
   void _startAutoScroll() {
     _timer = Timer.periodic(const Duration(seconds: 5), (timer) {
       if (_pageController.hasClients) {
-        int nextPage = _pageController.page!.toInt() + 1;
+        double? currentPage = _pageController.page;
+        int nextPage = (currentPage ?? 0).toInt() + 1;
+
         if (nextPage >= itemCount) {
           nextPage = 0;
         }
+
         _pageController.animateToPage(
           nextPage,
-          duration: const Duration(seconds: 1), // slower smooth scroll
-          curve: Curves.easeInOut, // smooth easing
+          duration: const Duration(seconds: 1),
+          curve: Curves.easeInOut,
         );
       }
     });
   }
+
 
   @override
   void initState() {

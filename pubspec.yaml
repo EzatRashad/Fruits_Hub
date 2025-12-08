@@ -50,6 +50,7 @@ dependencies:
   sign_in_with_apple:
   modal_progress_hud_nsn: null
   get_it: null
+  skeletonizer:
   dartz: null
   dots_indicator: null
   flutter:

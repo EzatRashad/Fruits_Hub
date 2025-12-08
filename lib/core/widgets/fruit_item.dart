@@ -1,11 +1,13 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fruit_hub/core/get_products_repo/domain/entity/product_entity.dart';
 import 'package:fruit_hub/core/utils/app_colors.dart';
 import 'package:fruit_hub/core/widgets/custom_network_image.dart';
 
 class FruitItem extends StatelessWidget {
-  const FruitItem({super.key});
+  const FruitItem({super.key, required this.product});
+  final ProductEntity product;
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +56,7 @@ class FruitItem extends StatelessWidget {
             child: ListTile(
               contentPadding: EdgeInsets.zero,
               title: Text(
-                "فراولة",
+                product.name,
                 maxLines: 2,
                 textAlign: TextAlign.right,
                 style: Theme.of(context).textTheme.titleMedium,

@@ -9,7 +9,8 @@ class FirestoreService implements DatabaseService {
   Future<void> addData(
       {required String path,
       required Map<String, dynamic> data,
-      String? docId}) async {
+      String? docId,
+      }) async {
     try {
       if (docId != null) {
         await _firestore.collection(path).doc(docId).set(data);
@@ -23,13 +24,31 @@ class FirestoreService implements DatabaseService {
   }
 
   @override
-  Future<Map<String, dynamic>> getData(
-      {required String docId, required String path}) async {
+  Future<dynamic> getData({String? docId, required String path, Map<String, dynamic>? query}) async {
     try {
-      var data = await _firestore.collection(path).doc(docId).get();
-      return data.data() as Map<String, dynamic>;
+      if (docId != null) {
+        var data = await _firestore.collection(path).doc(docId).get();
+        return data.data();
+      } else {
+        Query<Map<String, dynamic>> data = await _firestore.collection(path);
+        if (query != null) {
+          if (query.containsKey('orderBy')) {
+            data = data.orderBy(query['orderBy'], descending: query['descending'] ?? false);
+          }
+          if (query.containsKey('limit')) {
+            data = data.limit(query['limit']);
+          }
+        }
+        var result = await data.get();
+
+        if (result.docs.isNotEmpty) {
+          return result.docs.map((e) => e.data()).toList();
+        } else {
+          throw Exception(
+              'No documents found in the collection at path: $path');
+        }
+      }
     } catch (e) {
-      log('Error fetching user data: ${e.toString()}');
       throw Exception('Error fetching user data: ${e.toString()}');
     }
   }
