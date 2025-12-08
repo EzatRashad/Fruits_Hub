@@ -8,17 +8,15 @@ class ProductsGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SliverGrid(
-      delegate: SliverChildBuilderDelegate(
-        (context, index) => FruitItem(product: products[index]),
-        childCount: products.length,
-      ),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+    return SliverGrid.builder(
+     itemCount: products.length,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        mainAxisSpacing: 12,
-        crossAxisSpacing: 12,
-        childAspectRatio: 0.75,
+        childAspectRatio: 163 / 214,
+        mainAxisSpacing: 8,
+        crossAxisSpacing: 16,
       ),
+      itemBuilder: (context, index) => FruitItem(product: products[index]),
     );
   }
 }

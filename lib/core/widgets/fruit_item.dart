@@ -89,7 +89,7 @@ class FruitItem extends StatelessWidget {
                 ),
                 textAlign: TextAlign.right,
               ),
-            
+
               /// زر الإضافة
               trailing: GestureDetector(
                 onTap: () {},
