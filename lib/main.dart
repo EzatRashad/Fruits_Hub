@@ -4,6 +4,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit_hub/core/functions/on_generate_route.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:fruit_hub/core/get_products_repo/domain/repo/get_products_repo.dart';
+import 'package:fruit_hub/features/home/presentation/cubits/home_cubit.dart';
 import 'package:fruit_hub/features/splash_screen/presentation/splash_screen_view/splash_screen_view.dart';
 import 'core/services/get_it_service/get_it_service.dart';
 import 'core/utils/bloc_observar.dart';
@@ -19,7 +21,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-    setup();
+  setup();
 
   await SharedPreferencesService.init();
 
@@ -31,28 +33,36 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(375, 812),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      builder: (_, child) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          localizationsDelegates: [
-            S.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: S.delegate.supportedLocales,
-          locale: const Locale('ar'),
-          theme: AppTheme.lightTheme,
-          darkTheme: AppTheme.darkTheme,
-          themeMode: AppTheme.currentTheme,
-          onGenerateRoute: onGenerateRoute,
-          initialRoute: SplashScreenView.routeName,
-        );
-      },
-    );
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => HomeCubit(
+              productsRepo: getIt.get<GetProductsRepo>(),
+            )..getBestSelling(),
+          )
+        ],
+        child: ScreenUtilInit(
+          designSize: const Size(375, 812),
+          minTextAdapt: true,
+          splitScreenMode: true,
+          builder: (_, child) {
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              localizationsDelegates: [
+                S.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: S.delegate.supportedLocales,
+              locale: const Locale('ar'),
+              theme: AppTheme.lightTheme,
+              darkTheme: AppTheme.darkTheme,
+              themeMode: AppTheme.currentTheme,
+              onGenerateRoute: onGenerateRoute,
+              initialRoute: SplashScreenView.routeName,
+            );
+          },
+        ));
   }
 }

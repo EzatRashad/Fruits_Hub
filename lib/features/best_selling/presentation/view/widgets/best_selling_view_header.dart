@@ -1,0 +1,37 @@
+import 'package:flutter/material.dart';
+import 'package:fruit_hub/core/utils/app_images.dart'; 
+import 'package:svg_flutter/svg.dart';
+
+ 
+class BestSellingViewHeader extends StatelessWidget {
+  const BestSellingViewHeader({super.key, required this.productsLength});
+  final int productsLength;
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Text(
+          '$productsLength نتائج',
+          textAlign: TextAlign.right,
+          style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                  fontSize: 16,
+                ),
+        ),
+        const Spacer(),
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          decoration: ShapeDecoration(
+            color: Colors.white.withOpacity(0.10000000149011612),
+            shape: RoundedRectangleBorder(
+              side: const BorderSide(width: 1, color: Color(0x66CACECE)),
+              borderRadius: BorderRadius.circular(4),
+            ),
+          ),
+          child: SvgPicture.asset(
+            Assets.assetsImagesFilter2,
+          ),
+        )
+      ],
+    );
+  }
+}

@@ -41,7 +41,12 @@ class ProductModel {
     required this.stockQuantity,
   });
 
-  factory ProductModel.fromJson(Map<String, dynamic> json) {
+ factory ProductModel.fromJson(Map<String, dynamic> json) {
+    // أولاً: حوّل الريفيوهات لـ entities
+    List<ReviewEntity> reviewEntities = (json['reviews'] as List? ?? [])
+        .map((e) => ReviewModel.fromJson(e).toEntity())
+        .toList();
+
     return ProductModel(
       name: json['name'] ?? '',
       code: json['code'] ?? '',
@@ -52,16 +57,15 @@ class ProductModel {
       isFeatured: json['isFeatured'] ?? false,
       imageUrl: json['imageUrl'],
       sellingCount: json['sellingCount'] ?? 0,
-      reviews: (json['reviews'] as List? ?? [])
-          .map((e) => ReviewModel.fromJson(e))
-          .toList(),
+      reviews: reviewEntities.map((e) => ReviewModel.fromEntity(e)).toList(),
       expiryMonths: json['expiryMonths'] ?? 0,
       numOfCalories: json['numOfCalories'] ?? 0,
-      ratingCount: json['ratingCount'] ?? 0,
-      averageRating: getAvgRatingFromReviews(json['reviews']),
+      ratingCount: json['ratingCount'] ?? reviewEntities.length,
+      averageRating: getAvgRatingFromReviews(reviewEntities),
       stockQuantity: json['stockQuantity'] ?? 0,
     );
   }
+
 
   factory ProductModel.fromEntity(ProductEntity entity) {
     return ProductModel(

@@ -8,6 +8,12 @@ import 'home_cubit_stste.dart';
 class HomeCubit extends Cubit<HomeCubitState> {
   final GetProductsRepo productsRepo;
   HomeCubit({required this.productsRepo}) : super(HomeInitialState());
+  int get productsLength {
+    if (state is GetBestSellingSuccessState) {
+      return (state as GetBestSellingSuccessState).products.length;
+    }
+    return 0;
+  }
   void getBestSelling() async {
     log('getBestSelling called');
     emit(GetBestSellingLoadingState());

@@ -20,40 +20,35 @@ class HomeViewBody extends StatefulWidget {
 class _HomeViewBodyState extends State<HomeViewBody> {
   @override
   void initState() {
-        context.read<HomeCubit>().getBestSelling();
 
     super.initState();
   }
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(create: (context) => HomeCubit(
-      productsRepo: getIt<GetProductsRepo>(),
-    ),
-      child: SafeArea(
-        child: Scaffold(
-          body: CustomScrollView(
-            slivers: [
-              const HomeAppBar(),
-              SliverPadding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                sliver: SliverToBoxAdapter(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      16.ph,
-                      const SearchTextField(),
-                      12.ph,
-                      const FeaturedList(),
-                      12.ph,
-                      const BestSellingHeader(),
-                      12.ph,
-                    ],
-                  ),
+    return SafeArea(
+      child: Scaffold(
+        body: CustomScrollView(
+          slivers: [
+            const HomeAppBar(),
+            SliverPadding(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              sliver: SliverToBoxAdapter(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    16.ph,
+                    const SearchTextField(),
+                    12.ph,
+                    const FeaturedList(),
+                    12.ph,
+                    const BestSellingHeader(),
+                    12.ph,
+                  ],
                 ),
               ),
-              const BestProductsGridViewBlocBuilder(),
-            ],
-          ),
+            ),
+            const BestProductsGridViewBlocBuilder(),
+          ],
         ),
       ),
     );

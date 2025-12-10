@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit_hub/core/get_products_repo/domain/entity/product_entity.dart';
 import 'package:fruit_hub/core/utils/app_colors.dart';
 import 'package:fruit_hub/core/widgets/custom_network_image.dart';
+import 'package:fruit_hub/core/widgets/default_image_widget.dart';
 
 class FruitItem extends StatelessWidget {
   const FruitItem({super.key, required this.product});
@@ -24,8 +25,8 @@ class FruitItem extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.vertical(top: Radius.circular(8.r)),
-                child: CustomNetworkImage(
-                  imageUrl:
+                child: DefaultImageWidget(
+                   product.imageUrl??
                       "https://images.pexels.com/photos/46174/strawberries-berries-fruit-freshness-46174.jpeg",
                 ),
               ),
@@ -65,7 +66,7 @@ class FruitItem extends StatelessWidget {
                 TextSpan(
                   children: [
                     TextSpan(
-                      text: '10 جنية ',
+                      text: '\$${product.price.toStringAsFixed(2)} ',
                       style: Theme.of(context).textTheme.titleLarge!.copyWith(
                             color: AppColors.secondryColor,
                             fontSize: 13.sp,

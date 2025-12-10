@@ -26,24 +26,31 @@ class FirestoreService implements DatabaseService {
   @override
   Future<dynamic> getData({String? docId, required String path, Map<String, dynamic>? query}) async {
     try {
+      log("Fetching data from path: $path with docId: $docId and query: $query");
       if (docId != null) {
+        log("Fetching document with docId: $docId from path: $path");
         var data = await _firestore.collection(path).doc(docId).get();
         return data.data();
       } else {
+        log("Fetching collection from path: $path with query: $query");
         Query<Map<String, dynamic>> data = await _firestore.collection(path);
         if (query != null) {
           if (query.containsKey('orderBy')) {
             data = data.orderBy(query['orderBy'], descending: query['descending'] ?? false);
+            log("Ordering collection by ${query['orderBy']} descending: ${query['descending'] ?? false}");
           }
           if (query.containsKey('limit')) {
             data = data.limit(query['limit']);
+            log("Limiting collection to ${query['limit']} documents");
           }
         }
         var result = await data.get();
+        log("Fetched ${result.docs.length} documents from collection at path: $path");
 
         if (result.docs.isNotEmpty) {
           return result.docs.map((e) => e.data()).toList();
         } else {
+          log('No documents found in the collection at path: $path');
           throw Exception(
               'No documents found in the collection at path: $path');
         }
