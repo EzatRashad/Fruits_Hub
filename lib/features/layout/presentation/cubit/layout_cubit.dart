@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruit_hub/features/cart/presentation/view/cart_view.dart';
 import 'package:fruit_hub/features/home/presentation/views/home_view.dart';
 import 'package:fruit_hub/features/products/presentation/view/products_view.dart';
 
@@ -12,11 +13,7 @@ class LayoutCubit extends Cubit<LayoutStates> {
   List<Widget> screens = [
     HomeView(),
     ProductsView(),
-    Scaffold(
-      body: Center(
-        child: Text("3"),
-      ),
-    ),
+    CartView(),
     Scaffold(
       body: Center(
         child: Text("4"),

@@ -5,6 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fruit_hub/core/functions/on_generate_route.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fruit_hub/core/get_products_repo/domain/repo/get_products_repo.dart';
+import 'package:fruit_hub/features/cart/presentation/cubit/cart_cubit/cart_cubit.dart';
+import 'package:fruit_hub/features/cart/presentation/cubit/cart_item_cubit/cart_item_cubit.dart';
 import 'package:fruit_hub/features/home/presentation/cubits/home_cubit.dart';
 import 'package:fruit_hub/features/products/presentation/cubit/products_cubit.dart';
 import 'package:fruit_hub/features/splash_screen/presentation/splash_screen_view/splash_screen_view.dart';
@@ -46,6 +48,12 @@ class MyApp extends StatelessWidget {
               productsRepo: getIt.get<GetProductsRepo>(),
             )..getProducts(),
           ),
+          BlocProvider(
+            create: (context) => CartCubit(),
+          ),
+          BlocProvider(
+            create: (context) => CartItemCubit(),
+          )
         ],
         child: ScreenUtilInit(
           designSize: const Size(375, 812),

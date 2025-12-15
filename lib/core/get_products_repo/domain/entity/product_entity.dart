@@ -1,9 +1,9 @@
-import 'dart:io';
+ 
+import 'package:equatable/equatable.dart';
 
 import 'review_entity.dart';
 
- 
-class ProductEntity {
+class ProductEntity extends Equatable {
   final String name;
   final String code;
   final String description;
@@ -33,4 +33,7 @@ class ProductEntity {
     required this.isFeatured,
     required this.stockQuantity,
   });
+  
+  @override
+  List<Object?> get props => [code];
 }

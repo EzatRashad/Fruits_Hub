@@ -42,7 +42,6 @@ class ProductModel {
   });
 
  factory ProductModel.fromJson(Map<String, dynamic> json) {
-    // أولاً: حوّل الريفيوهات لـ entities
     List<ReviewEntity> reviewEntities = (json['reviews'] as List? ?? [])
         .map((e) => ReviewModel.fromJson(e).toEntity())
         .toList();
@@ -89,6 +88,7 @@ class ProductModel {
   ProductEntity toEntity() {
     return ProductEntity(
       name: name,
+      imageUrl: imageUrl,
       code: code,
       description: description,
       price: price,

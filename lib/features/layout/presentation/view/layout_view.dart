@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fruit_hub/core/get_products_repo/domain/repo/get_products_repo.dart';
-import 'package:fruit_hub/core/services/get_it_service/get_it_service.dart';
+import 'package:fruit_hub/core/utils/utils.dart';
+import 'package:fruit_hub/features/cart/presentation/cubit/cart_cubit/cart_cubit.dart';
+import 'package:fruit_hub/features/cart/presentation/cubit/cart_cubit/cart_state.dart'; 
 import 'package:fruit_hub/features/layout/presentation/view/widgets/layout_view_body.dart';
-import 'package:fruit_hub/features/home/presentation/cubits/home_cubit.dart';
 
 class LayoutView extends StatelessWidget {
   const LayoutView({super.key});
@@ -11,6 +11,16 @@ class LayoutView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const LayoutViewBody();
+    return    BlocListener<CartCubit, CartState>(
+      listener: (context, state) {
+        if (state is CartItemAdded) {
+          'تم إضافة العنصر بنجاح'.showSnackbar(context: context, isSuccess: true);
+        }
+        if (state is CartItemRemoved) {
+          'تم حذف العنصر بنجاح'.showSnackbar(context: context, isSuccess: true);
+        }
+      },
+      child: const LayoutViewBody(),
+    );
   }
 }

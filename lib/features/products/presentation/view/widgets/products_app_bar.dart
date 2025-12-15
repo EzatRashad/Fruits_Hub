@@ -12,13 +12,13 @@ class ProductsAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
+      
       backgroundColor: Colors.white,
       elevation: 0,
       
       floating: true,
       snap: true,
-       leading: BackWidget(),
-       title: Text(
+        title: Text(
         "المنتجات",
         style: Theme.of(context).textTheme.titleLarge?.copyWith(
               fontSize: 19.sp,
