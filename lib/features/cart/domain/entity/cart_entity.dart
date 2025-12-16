@@ -8,6 +8,7 @@ class CartEntity {
   CartEntity(this.cartItems);
 
   addCartItem(CartItemEntity cartItemEntity) {
+    
     cartItems.add(cartItemEntity);
   }
 
